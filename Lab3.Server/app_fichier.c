@@ -33,14 +33,6 @@ int main()
     action.sa_flags = SA_RESTART;
     sigaction(SIGCHLD, &action, NULL);
 
-    // On ouvre le fichier user.list
-    FILE *user_list = fopen("user.list", "r");
-    if (user_list == NULL)
-    {
-        printf("Erreur lors de l'ouverture du fichier user.list !\n");
-        return -1;
-    }
-
     while (1)
     {
         CHECK(sd = accept(se, (struct sockaddr *)&clt, &cltLen), "Can't connect");
@@ -83,7 +75,6 @@ int main()
 void dialogueClt(int sd, struct sockaddr_in clt)
 {
     char buffer[MAX_BUFF];
-    
 
     printf("Lecture du message client ...\n");
     // On lit le message client
@@ -96,7 +87,7 @@ void dialogueClt(int sd, struct sockaddr_in clt)
         // Si Hihi alors on retourne pw
         write(sd, PW, sizeof(PW));
     }
-    else 
+    else
     {
         // Sinon on retourne abort et on coupe la connexion
         write(sd, ABORT, sizeof(ABORT));
@@ -108,26 +99,119 @@ void dialogueClt(int sd, struct sockaddr_in clt)
 
     printf("L'identification du user est <%s>\n", buffer);
 
-    // On regarde si le format est correct (username:password)
+    char authentification_string[MAX_BUFF];
+    strcpy(authentification_string, buffer);
 
+    // On regarde si le format est correct (username:password)
+    char *username = strtok(buffer, ":");
+    char *password = strtok(NULL, ":");
+    char *reste = strtok(NULL, ":");
+
+    printf("Username : <%s>\n", username);
+    printf("Password : <%s>\n", password);
+    printf("Reste : <%s>\n", reste);
+
+    if (username == NULL || password == NULL || reste != NULL)
+    {
+        // Mauvais format
+        printf("Mauvais format !\n");
+        write(sd, ABORT, sizeof(ABORT));
+        return;
+    }
+    printf("Bon format !\n");
+    // Bon format
     // On vérifie si les informations se trouvent dans le fichier user.list
 
-    // Si présent alors on récupère le nom de fichier associé
+    // On ouvre le fichier user.list
+    FILE *user_list = fopen("user.list", "r");
+    if (user_list == NULL)
+    {
+        printf("Erreur lors de l'ouverture du fichier user.list !\n");
+        return;
+    }
+
+    char ligne[MAX_BUFF];
+    char *authentification_string_file;
+    char *filename;
+    char flag = 0;
+
+    while (fgets(ligne, MAX_BUFF, user_list) != NULL)
+    {
+        authentification_string_file = strtok(ligne, "\t");
+        printf("String d'authentification lue : <%s>\n", authentification_string_file);
+        printf("authentification correcte : <%s>\n", authentification_string);
+
+        printf("strcmp = %d\n", strcmp(authentification_string, authentification_string_file));
+
+        // Si présent alors on récupère le nom de fichier associé
+        if (strcmp(authentification_string, authentification_string_file) == 0)
+        {
+            filename = strtok(NULL, "\t");
+            filename[strlen(filename) - 1] = '\0';
+            printf("%s : %s\n", authentification_string_file, filename);
+            flag = 1;
+            break;
+        }
+    }
+
+    fclose(user_list);
+
+    if (flag == 0)
+    {
+        write(sd, ABORT, sizeof(ABORT));
+        return;
+    }
 
     // On ouvre le fichier correspondant
+    FILE *fichier = NULL;
 
-    // On le lit et on stocke les informations dans un buffer
+    char filepath[100];
+    strcpy(filepath, "files/");
+    strcat(filepath, filename);
+    printf("Le fichier de l'utilisateur se trouve dans <%s>\n", filepath);
+    fichier = fopen(filepath, "r");
+    if (fichier == NULL)
+    {
+        printf("Erreur lors de l'ouverture du fichier client !\n");
+        return;
+    }
 
+    printf("OK envoyé! \n");
     // On envoie OK au client
+    write(sd, OK, sizeof(OK));
 
-    // On envoie les données du buffer
+    char caractere;
+    int n = 0;
+    char response[MAX_BUFF];
+    printf("Lecture du fichier !\n");
+    // On le lit et on stocke les informations dans un buffer
+    while (caractere = fgetc(fichier))
+    {
+        if (feof(fichier))
+        {
+            break;
+        }
+        response[n++] = caractere;
+        if (n > MAX_BUFF - 1)
+        {
+            response[n + 1] = '\0';
+            printf("Envoi de <%s>\n", response);
+            write(sd, response, MAX_BUFF);
+            n = 0;
+        }
+    }
+    response[n + 1] = '\0';
+    printf("Envoi de <%s>\n", response);
+    write(sd, response, sizeof(response));
+    printf("STOP\n");
+    write(sd, STOP, sizeof(STOP));
 }
 
 void handler(int sig)
 {
     pid_t pid;
-    while(pid = waitpid(-1, NULL, WNOHANG) > 0)
+    while (pid = waitpid(-1, NULL, WNOHANG) > 0)
     {
-        printf("Deleting child : %d\n");        
+        printf("Deleting child : %d\n");
     }
 }

@@ -5,15 +5,13 @@
 * the Visual Studio Code Server License Terms (https://aka.ms/vscode-server-license) and
 * the Microsoft Privacy Statement (https://privacy.microsoft.com/en-US/privacystatement).
 *
-Server bound to 127.0.0.1:37291 (IPv4)
-Extension host agent listening on 37291
+Server bound to 127.0.0.1:32909 (IPv4)
+Extension host agent listening on 32909
 
-[08:07:19] Extension host agent started.
-[08:07:19] Started initializing default profile extensions in extensions installation folder. file:///home/ig2i/.vscode-server/extensions
-[08:07:19] Completed initializing default profile extensions in extensions installation folder. file:///home/ig2i/.vscode-server/extensions
-[08:07:20] [127.0.0.1][ad21c3c7][ManagementConnection] New connection established.
-[08:07:20] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] New connection established.
-[08:07:20] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] <164> Launched Extension Host Process.
+[12:58:28] Extension host agent started.
+[12:58:28] [127.0.0.1][69310c84][ManagementConnection] New connection established.
+[12:58:28] [127.0.0.1][59890f75][ExtensionHostConnection] New connection established.
+[12:58:28] [127.0.0.1][59890f75][ExtensionHostConnection] <1074> Launched Extension Host Process.
 [IPC Library: Pty Host]  WARN Shell integration cannot be enabled for executable "/bin/sh" and args [
   '-c',
   'wget --version > /dev/null\n' +
@@ -74,23 +72,10 @@ Extension host agent listening on 37291
     'fi\n' +
     'exit 0'
 ]
-[08:08:05] Getting Manifest... ms-vscode.cpptools
-[08:08:05] Installing extension: ms-vscode.cpptools
-[08:08:43] Extracted extension to /home/ig2i/.vscode-server/extensions/.5d55aba9-526e-4a90-a8ee-db4824e49e69: ms-vscode.cpptools
-[08:08:43] Renamed to /home/ig2i/.vscode-server/extensions/ms-vscode.cpptools-1.13.9-linux-x64
-[08:08:43] Extracting completed. ms-vscode.cpptools
-[08:08:43] Extension installed successfully: ms-vscode.cpptools
-[08:09:10] [127.0.0.1][ad21c3c7][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
-[08:09:10] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] <164> Extension Host Process exited with code: 0, signal: null.
-Last EH closed, waiting before shutting down
-[08:09:10] Last EH closed, waiting before shutting down
-Got delay-shutdown request while in shutdown timeout, delaying
-[08:09:56] Got delay-shutdown request while in shutdown timeout, delaying
-Cancelling previous shutdown timeout
-[08:09:56] Cancelling previous shutdown timeout
-[08:09:57] [127.0.0.1][9c50a19a][ManagementConnection] New connection established.
-[08:09:57] [127.0.0.1][536fba47][ExtensionHostConnection] New connection established.
-[08:09:57] [127.0.0.1][536fba47][ExtensionHostConnection] <259> Launched Extension Host Process.
+[12:58:35] [127.0.0.1][69310c84][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[12:58:44] [127.0.0.1][04995fa3][ManagementConnection] New connection established.
+[12:58:44] [127.0.0.1][6c5eb289][ExtensionHostConnection] New connection established.
+[12:58:44] [127.0.0.1][6c5eb289][ExtensionHostConnection] <1169> Launched Extension Host Process.
 [IPC Library: Pty Host]  WARN Shell integration cannot be enabled for executable "/bin/sh" and args [
   '-c',
   'wget --version > /dev/null\n' +
@@ -151,9 +136,4 @@ Cancelling previous shutdown timeout
     'fi\n' +
     'exit 0'
 ]
-[08:10:09] [127.0.0.1][9c50a19a][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
-[08:10:09] [127.0.0.1][536fba47][ExtensionHostConnection] <259> Extension Host Process exited with code: 0, signal: null.
-Cancelling previous shutdown timeout
-[08:10:09] Cancelling previous shutdown timeout
-Last EH closed, waiting before shutting down
-[08:10:09] Last EH closed, waiting before shutting down
+[13:03:44] [127.0.0.1][59890f75][ExtensionHostConnection] <1074> Extension Host Process exited with code: 0, signal: null.
