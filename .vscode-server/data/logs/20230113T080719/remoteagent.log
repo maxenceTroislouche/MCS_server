@@ -1,0 +1,24 @@
+2023-01-13 08:07:19.865 [info] Extension host agent started.
+2023-01-13 08:07:19.940 [info] Started initializing default profile extensions in extensions installation folder. file:///home/ig2i/.vscode-server/extensions
+2023-01-13 08:07:19.995 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/ig2i/.vscode-server/extensions
+2023-01-13 08:07:20.011 [info] [127.0.0.1][ad21c3c7][ManagementConnection] New connection established.
+2023-01-13 08:07:20.012 [info] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] New connection established.
+2023-01-13 08:07:20.017 [info] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] <164> Launched Extension Host Process.
+2023-01-13 08:08:05.035 [info] Getting Manifest... ms-vscode.cpptools
+2023-01-13 08:08:05.185 [info] Installing extension: ms-vscode.cpptools
+2023-01-13 08:08:43.564 [info] Extracted extension to /home/ig2i/.vscode-server/extensions/.5d55aba9-526e-4a90-a8ee-db4824e49e69: ms-vscode.cpptools
+2023-01-13 08:08:43.576 [info] Renamed to /home/ig2i/.vscode-server/extensions/ms-vscode.cpptools-1.13.9-linux-x64
+2023-01-13 08:08:43.595 [info] Extracting completed. ms-vscode.cpptools
+2023-01-13 08:08:43.603 [info] Extension installed successfully: ms-vscode.cpptools
+2023-01-13 08:09:10.493 [info] [127.0.0.1][ad21c3c7][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-01-13 08:09:10.524 [info] [127.0.0.1][9f6e2cb3][ExtensionHostConnection] <164> Extension Host Process exited with code: 0, signal: null.
+2023-01-13 08:09:10.525 [info] Last EH closed, waiting before shutting down
+2023-01-13 08:09:56.955 [info] Got delay-shutdown request while in shutdown timeout, delaying
+2023-01-13 08:09:56.956 [info] Cancelling previous shutdown timeout
+2023-01-13 08:09:57.173 [info] [127.0.0.1][9c50a19a][ManagementConnection] New connection established.
+2023-01-13 08:09:57.178 [info] [127.0.0.1][536fba47][ExtensionHostConnection] New connection established.
+2023-01-13 08:09:57.193 [info] [127.0.0.1][536fba47][ExtensionHostConnection] <259> Launched Extension Host Process.
+2023-01-13 08:10:09.651 [info] [127.0.0.1][9c50a19a][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-01-13 08:10:09.701 [info] [127.0.0.1][536fba47][ExtensionHostConnection] <259> Extension Host Process exited with code: 0, signal: null.
+2023-01-13 08:10:09.702 [info] Cancelling previous shutdown timeout
+2023-01-13 08:10:09.702 [info] Last EH closed, waiting before shutting down
